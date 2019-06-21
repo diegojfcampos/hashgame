@@ -43,9 +43,9 @@ def restart(reinicia):
                 jogo = True
                 jogador = 1
                 jogadas = 9
-                print("===============")
-                print("JOGO REINICIADO")
-                print("===============")
+                print("==============")
+                print("GAME RESTARTED")
+                print("==============")
                 printTabuleiro(tabuleiro)
 
 
