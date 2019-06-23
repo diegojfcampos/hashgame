@@ -30,7 +30,6 @@ def DesignBoard(tabuleiro):
             tab = ""
     print("---------------")
 
-
 def Restart(restart):
     global board
     global position
@@ -44,8 +43,6 @@ def Restart(restart):
     print(f"===============\n GAME RESTARTED\n===============")
     DesignBoard(board)
 
-
-
 def Test(test):
     test1 = board[0] + board[1] + board[2]
     test2 = board[3] + board[4] + board[5]
@@ -58,14 +55,21 @@ def Test(test):
 
     if test1 == 3 or test2 == 3 or test3 == 3 or test4 == 3 or test5 == 3 or test6 == 3 or test7 == 3 or test8 == 3:
         print("PLAYER 1 WIN")
+        ScoreBoard(1)
         Restart(board)
+
+
+
+
     elif test1 == -3 or test2 == -3 or test3 == -3 or test4 == -3 or test5 == -3 or test6 == -3 or test7 == -3 or test8 == -3:
         print("PLAYER 2 WIN")
+        ScoreBoard(2)
         Restart(board)
 
 
 
-def Drawn(drwan):
+
+def Drawn(drawn):
     test1 = board[0] + board[1] + board[2]
     test2 = board[3] + board[4] + board[5]
     test3 = board[6] + board[7] + board[8]
@@ -83,8 +87,25 @@ def Drawn(drwan):
                             if test7 != 0 and test7 > -3 and test7 < 3:
                                 if test8 != 0 and test8 > -3 and test8 < 3:
                                     print("     DRAWN     ")
+                                    ScoreBoard(3)
                                     Restart(board)
 
+
+
+
+
+def ScoreBoard(scoreboard):
+    player1 = []
+    player2 = []
+    drawn = []
+    if scoreboard == 3:
+        drawn.extend('3')
+    else:
+        if scoreboard == 1:
+            player1.extend('1')
+        else:
+            player2.extend('2')
+    print(f"SCOREBOARD\n\nPLAYER 1: {len(player1)}\nPlAYER 2: {len(player2)}\nDRAWN: {len(drawn)}")
 
 
 #JOGO
@@ -92,9 +113,9 @@ def Drawn(drwan):
 while game == True:
         Test(board)
         if player == 1:
-            print("  PLAYER 1")
+            print("PLAYER 1")
         else:
-            print("  PLAYER 2")
+            print("PLAYER 2")
         position = int(input("Choose Position 0 to 8: "))
         if position < 0 or position > 8:
             print("Invalid Position, type: 1 to 8.")
@@ -114,6 +135,8 @@ while game == True:
                 player = 1
                 Test(board)
                 Drawn(board)
+
+
 
 
 
